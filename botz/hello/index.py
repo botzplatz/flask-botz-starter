@@ -1,17 +1,15 @@
-from flask import Flask
+from os import getenv
+from dotenv import load_dotenv
+from botzapp import BotzApp
 
-app = Flask(__name__)
+load_dotenv()
+
+name = "Hello World"
+PORT = getenv("PORT", 5001)
 
 
 def say_hello():
-    return "Hello World"
+    return name
 
 
-class BotzApp:
-    def __init__(self, app):
-        self.app = app
-
-    def init_routes(self):
-        @self.app.route("/", methods=["POST"])
-        def root():
-            return say_hello()
+start = BotzApp.gen_botz_app(port=PORT, name=name, gen_success_response=say_hello)
