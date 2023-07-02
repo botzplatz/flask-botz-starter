@@ -2,16 +2,16 @@ import sys
 from botz.hello.index import call as call_hello
 
 # TODO: Add the bot name -> call bot entry when new botz are added
-botzNameRunMap = {
+botz_call_map = {
     "hello": call_hello,
 }
 
-allBotz = ", ".join(list(botzNameRunMap.keys()))
+all_botz = ", ".join(list(botz_call_map.keys()))
 
-botzName = sys.argv[1]
+bot_name = sys.argv[1]
 
 if __name__ == "__main__":
-    if botzNameRunMap.get(botzName):
-        botzNameRunMap[botzName]()
+    if botz_call_map.get(bot_name):
+        botz_call_map[bot_name]()
     else:
-        print(f"Unknown botz: {botzName}. Valid botz are: {allBotz}")
+        print(f"Unknown botz: {bot_name}. Valid botz are: {all_botz}")
